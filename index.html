@@ -694,6 +694,34 @@
 
     /* ── RESPONSIVE ───────────────────────────── */
     @media (max-width: 768px) {
+      /* ── FIX 1: Stop horizontal overflow causing black gutter ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Kill the oversized decorative text that bleeds off-screen */
+.stmt-bg,
+.verse-bg {
+  display: none;
+}
+
+/* Stop the ticker overflowing */
+.ticker {
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+/* ── FIX 2: Reduce hero empty space on mobile ── */
+.hero {
+  height: 75svh;
+  min-height: 520px;
+}
+
+/* Tighten the content padding so text sits higher */
+.hero-content {
+  padding: 0 1.5rem 2.5rem;
+}
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
 
