@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ═══════════════════════════════════════════
-       SEO — PRIMARY META
-  ══════════════════════════════════════════════ -->
   <title>VERSE ONE: The Shearer's Gospel — Animated Faith Film | The Verse Project</title>
   <meta name="description" content="A 13-minute animated short film. A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up. An animated faith film in development — The Verse Project." />
   <meta name="keywords" content="animated faith film, Christian animation, animated short film, faith storytelling, British Nigerian film, VERSE ONE, The Verse Project, gospel animation, festival film, animated movie 2026" />
@@ -14,9 +11,6 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.theverseprojects.com/" />
 
-  <!-- ═══════════════════════════════════════════
-       SEO — OPEN GRAPH
-  ══════════════════════════════════════════════ -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.theverseprojects.com/" />
   <meta property="og:title" content="VERSE ONE: The Shearer's Gospel — Animated Faith Film" />
@@ -27,17 +21,11 @@
   <meta property="og:site_name" content="The Verse Project" />
   <meta property="og:locale" content="en_GB" />
 
-  <!-- ═══════════════════════════════════════════
-       SEO — TWITTER CARD
-  ══════════════════════════════════════════════ -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="VERSE ONE: The Shearer's Gospel" />
   <meta name="twitter:description" content="A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up." />
   <meta name="twitter:image" content="https://www.theverseprojects.com/assets/hero.jpeg" />
 
-  <!-- ═══════════════════════════════════════════
-       SEO — STRUCTURED DATA
-  ══════════════════════════════════════════════ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,49 +43,51 @@
   }
   </script>
 
-  <!-- ═══════════════════════════════════════════
-       VERCEL WEB ANALYTICS
-  ══════════════════════════════════════════════ -->
   <script>window.va = window.va || function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
   <script defer src="/_vercel/insights/script.js"></script>
 
-  <!-- ═══════════════════════════════════════════
-       PERFORMANCE — FONT & IMAGE PRELOAD
-  ══════════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Unbounded:wght@200;300;400;700&family=DM+Sans:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="./assets/hero.jpeg" />
 
+  <!-- ── FAVICON ── -->
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" href="./icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
   <style>
-    /* ── RESET ────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:       #090806;
-      --ink2:      #0f0d0b;
-      --cream:     #ECE7DD;
-      --cream2:    #D7D0C3;
-      --gold:      #BF9A5C;
-      --gold-lt:   #D4B47A;
-      --muted:     rgba(236,231,221,0.42);
-      --faint:     rgba(236,231,221,0.14);
-      --border:    rgba(191,154,92,0.16);
+      --ink:     #090806;
+      --cream:   #ECE7DD;
+      --gold:    #BF9A5C;
+      --gold-lt: #D4B47A;
+      --muted:   rgba(236,231,221,0.42);
+      --faint:   rgba(236,231,221,0.14);
+      --border:  rgba(191,154,92,0.16);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      /* Prevents ANY horizontal scroll at root level */
+      overflow-x: hidden;
+    }
 
     body {
       background: var(--ink);
       color: var(--cream);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
+      /* Belt-and-braces: no horizontal overflow ever */
       overflow-x: hidden;
+      max-width: 100vw;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    /* ── NAV ──────────────────────────────────── */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0; z-index: 200;
@@ -129,11 +119,12 @@
     }
     .nav-links a:hover { color: var(--gold-lt); }
 
-    /* ── HERO ─────────────────────────────────── */
+    /* ── HERO ── */
     .hero {
       position: relative;
       height: 100svh;
       min-height: 600px;
+      /* overflow hidden on hero stops image bleeding */
       overflow: hidden;
     }
 
@@ -141,7 +132,6 @@
       position: absolute; inset: 0;
       background-image: url('./assets/hero.jpeg');
       background-size: cover;
-      /* Desktop: pull right so subject is visible alongside left-anchored type */
       background-position: 62% center;
       animation: slowpan 24s ease-in-out infinite alternate;
     }
@@ -150,7 +140,6 @@
       to   { transform: scale(1.05) translateX(-1.5%); }
     }
 
-    /* Dark from top, clear in middle, heavy at base */
     .hero-fade {
       position: absolute; inset: 0;
       background: linear-gradient(180deg,
@@ -161,12 +150,12 @@
         rgba(9,8,6,1.00) 100%
       );
     }
-    /* Left tint so type sits on dark always */
     .hero-side {
       position: absolute; inset: 0;
       background: linear-gradient(90deg, rgba(9,8,6,0.62) 0%, transparent 52%);
     }
 
+    /* Desktop: title at bottom */
     .hero-content {
       position: relative; z-index: 2;
       height: 100%;
@@ -225,7 +214,6 @@
       margin-top: 1.2rem;
     }
 
-    /* Bottom-right descriptor — desktop only */
     .hero-aside {
       position: absolute;
       right: 3rem; bottom: 4rem;
@@ -259,12 +247,14 @@
       z-index: 2;
     }
 
-    /* ── TICKER ───────────────────────────────── */
+    /* ── TICKER ── */
     .ticker {
       overflow: hidden;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       padding: 0.85rem 0;
+      /* Contain ticker strictly to page width */
+      max-width: 100%;
     }
     .ticker-track {
       display: flex;
@@ -287,7 +277,7 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* ── SECTION TAG ──────────────────────────── */
+    /* ── SECTION TAG ── */
     .stag {
       display: inline-flex;
       align-items: center;
@@ -307,7 +297,7 @@
       display: block;
     }
 
-    /* ── STATEMENT ────────────────────────────── */
+    /* ── STATEMENT ── */
     .statement {
       padding: 8rem 3rem 7rem;
       position: relative;
@@ -324,6 +314,9 @@
       line-height: 1;
       pointer-events: none;
       user-select: none;
+      /* Contain decorative text — never causes scroll */
+      overflow: hidden;
+      max-width: 100%;
     }
     .quote-stack { max-width: 1000px; }
     .ql {
@@ -370,7 +363,7 @@
       line-height: 1.65;
     }
 
-    /* ── STORY ────────────────────────────────── */
+    /* ── STORY ── */
     .story {
       padding: 8rem 3rem;
       display: grid;
@@ -406,7 +399,6 @@
       margin-bottom: 1.4rem;
     }
 
-    /* Location table */
     .loc-table { border: 1px solid var(--border); }
     .loc-row {
       display: grid;
@@ -448,7 +440,7 @@
     }
     .loc-row:hover .loc-arr { color: var(--gold); transform: rotate(0); }
 
-    /* ── SCRIPTURE ────────────────────────────── */
+    /* ── SCRIPTURE ── */
     .verse {
       padding: 7rem 3rem;
       text-align: center;
@@ -468,6 +460,7 @@
       pointer-events: none;
       user-select: none;
       letter-spacing: 0.08em;
+      /* Contained by overflow:hidden on parent */
     }
     .verse-q {
       font-family: 'Cormorant', serif;
@@ -488,7 +481,7 @@
       position: relative; z-index: 1;
     }
 
-    /* ── PROGRESS ─────────────────────────────── */
+    /* ── PROGRESS ── */
     .progress { padding: 8rem 3rem; border-top: 1px solid var(--border); }
     .progress-head {
       display: flex;
@@ -577,7 +570,7 @@
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.15} }
 
-    /* ── FOLLOW ───────────────────────────────── */
+    /* ── FOLLOW ── */
     .follow {
       padding: 8rem 3rem;
       border-top: 1px solid var(--border);
@@ -612,7 +605,6 @@
       font-weight: 200;
     }
 
-    /* Email form */
     .mc-msg {
       font-size: 0.62rem;
       letter-spacing: 0.2em;
@@ -633,6 +625,8 @@
     }
     .mc-row input {
       flex: 1;
+      /* min-width 0 prevents input from overflowing its flex container */
+      min-width: 0;
       padding: 1.1rem 1.3rem;
       background: transparent;
       border: none; outline: none;
@@ -656,6 +650,8 @@
       cursor: pointer;
       transition: background 0.3s;
       flex-shrink: 0;
+      /* Ensure button is never clipped */
+      white-space: nowrap;
     }
     .mc-row button:hover { background: var(--gold-lt); }
     .mc-row button:disabled { opacity: 0.5; cursor: default; }
@@ -667,7 +663,7 @@
       color: rgba(236,231,221,0.18);
     }
 
-    /* ── FOOTER ───────────────────────────────── */
+    /* ── FOOTER ── */
     footer {
       padding: 2rem 3rem;
       border-top: 1px solid rgba(191,154,92,0.08);
@@ -692,36 +688,86 @@
       color: rgba(236,231,221,0.18);
     }
 
-    /* ── RESPONSIVE ───────────────────────────── */
+    /* ══════════════════════════════════════════════
+       MOBILE — max-width: 768px
+       Desktop rules above are completely untouched.
+    ══════════════════════════════════════════════ */
     @media (max-width: 768px) {
+
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
 
-      /* Mobile hero fixes:
-         - Center the image so subject stays in frame regardless of crop
-         - Kill animation for performance
-         - Stronger base gradient so type is always readable */
+      /* ── HERO MOBILE ──
+         Title moves to TOP so it sits above the figures.
+         Image focal point shifts down so figures show
+         in the lower half of the frame.
+      ── */
+      .hero {
+        height: 100svh;
+        min-height: 580px;
+      }
+
       .hero-bg {
-        background-position: center center;
+        /* Shift image down — figures sit in lower portion,
+           dark sky fills top where the title goes */
+        background-position: center 70%;
         animation: none;
       }
+
+      /* Heavier dark band at top so VERSE title is readable
+         over whatever sky/background is in that zone */
       .hero-fade {
         background: linear-gradient(180deg,
-          rgba(9,8,6,0.88) 0%,
-          rgba(9,8,6,0.25) 26%,
-          rgba(9,8,6,0.15) 44%,
-          rgba(9,8,6,0.72) 70%,
+          rgba(9,8,6,0.92)  0%,
+          rgba(9,8,6,0.72) 18%,
+          rgba(9,8,6,0.15) 42%,
+          rgba(9,8,6,0.65) 72%,
           rgba(9,8,6,1.00) 100%
         );
       }
-      .hero-content { padding: 0 1.5rem 3.5rem; }
-      .hero-aside   { display: none; }
-      .hero-line    { left: 1.5rem; }
-      .hero-t1      { font-size: clamp(4rem, 22vw, 7rem); }
 
-      .statement,
-      .verse,
-      .progress { padding: 5rem 1.5rem; }
+      /* Title anchored to TOP — padding-top clears the nav bar */
+      .hero-content {
+        justify-content: flex-start;
+        padding: 5.5rem 1.5rem 3rem;
+      }
+
+      /* Label sits above the title on mobile */
+      .hero-label {
+        font-size: 0.5rem;
+        letter-spacing: 0.3em;
+        margin-bottom: 1rem;
+      }
+
+      .hero-t1 { font-size: clamp(3.8rem, 19vw, 6.5rem); }
+      .hero-t2 { font-size: clamp(1.6rem, 8vw, 2.8rem); }
+      .hero-t3 { display: none; }
+
+      /* Hide desktop-only elements */
+      .hero-aside { display: none; }
+      .hero-line  { left: 1.5rem; }
+
+      /* ── DECORATIVE OVERFLOW FIX ──
+         stmt-bg and verse-bg are large absolute text elements
+         that bleed past mobile viewport causing the black gutter.
+         We contain them strictly — no display:none needed, just clip.
+      ── */
+      .statement { overflow: hidden; }
+      .stmt-bg {
+        font-size: 35vw;
+        right: -5vw;
+      }
+
+      .verse { overflow: hidden; }
+      .verse-bg {
+        font-size: 35vw;
+        white-space: nowrap;
+      }
+
+      /* ── SECTION PADDING ── */
+      .statement { padding: 4rem 1.5rem 4rem; }
+      .verse     { padding: 5rem 1.5rem; }
+      .progress  { padding: 5rem 1.5rem; }
 
       .stmt-grid { grid-template-columns: 1fr; }
 
@@ -731,10 +777,24 @@
         padding: 5rem 1.5rem;
       }
 
+      /* Follow: single column, full width form */
       .follow {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
         padding: 5rem 1.5rem;
+      }
+
+      /* Ensure email input + button never overflow on small screens */
+      .mc-row {
+        width: 100%;
+      }
+      .mc-row input {
+        font-size: 0.78rem;
+        padding: 1rem 1rem;
+      }
+      .mc-row button {
+        padding: 1rem 1.2rem;
+        font-size: 0.58rem;
       }
 
       .progress-head {
@@ -745,12 +805,13 @@
       .progress-note { text-align: left; max-width: 100%; }
       .ms { grid-template-columns: 82px 1fr; gap: 0 1.5rem; }
 
-      footer { padding: 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
     }
 
-    @media (max-width: 420px) {
-      .hero-t1 { font-size: 3.6rem; }
-      .hero-t2 { font-size: 1.7rem; }
+    @media (max-width: 390px) {
+      .hero-t1 { font-size: 3.4rem; }
+      .hero-t2 { font-size: 1.5rem; }
+      .mc-row button { padding: 1rem 0.8rem; letter-spacing: 0.1em; }
     }
   </style>
 </head>
@@ -882,7 +943,6 @@
       <div class="progress-title">IN<br>MOTION<span>Where we are now</span></div>
       <p class="progress-note">The film is being built. This is what exists today.</p>
     </div>
-
     <div class="ms">
       <div class="ms-meta"><span class="ms-status done">Complete</span><div class="ms-bar full"></div></div>
       <div><span class="ms-title">Original Screenplay</span><span class="ms-body">The full script is written. Ebun's story, the dialogue, the three worlds — all of it exists on the page. This is not an idea. It is a film waiting to be made.</span></div>
@@ -916,22 +976,6 @@
     </div>
     <div>
       <p class="follow-desc">Be the first to see Ebun's world come to life — character reveals, behind-the-scenes moments, and news from the making of VERSE ONE. No noise. Only what matters.</p>
-
-      <!--
-      ══════════════════════════════════════════════
-      MAILCHIMP SETUP — 3 STEPS:
-      1. Mailchimp → Audience → Signup forms → Embedded forms
-      2. Copy the action URL (looks like):
-         https://yourname.us1.list-manage.com/subscribe/post?u=XXXX&id=XXXX
-      3. Paste it as the value of MC_ACTION in the script below.
-
-      NOTION SYNC — easiest options:
-      • Zapier: "New Mailchimp Subscriber" → "Create Notion Database Item" (free tier, 5 min setup)
-      • Make.com: same flow, also free tier
-      • Ask me to build a Vercel serverless function that posts direct to Notion API — no third party needed
-      ══════════════════════════════════════════════
-      -->
-
       <span id="mc-msg" class="mc-msg" aria-live="polite"></span>
       <div class="mc-row">
         <input type="email" id="mc-email" placeholder="Your email address" aria-label="Email address" autocomplete="email" />
@@ -948,9 +992,9 @@
   </footer>
 
   <script>
-    // ── MAILCHIMP ─────────────────────────────────────────
-    // Paste your full Mailchimp action URL here:
-    const MC_ACTION = 'https://YOURNAME.us1.list-manage.com/subscribe/post?u=XXXXXXXXXXXXXXXX&id=XXXXXXXXXX';
+    // ── MAILCHIMP ──────────────────────────────────
+    // Replace with your Mailchimp action URL:
+    const MC_ACTION = 'https://gmail.us14.list-manage.com/subscribe/post?u=475649f6927ace2359a3cfc50&id=11e7b20f6d&f_id=005dc2e1f0';
 
     const btn = document.getElementById('mc-btn');
     const inp = document.getElementById('mc-email');
@@ -968,7 +1012,6 @@
       msg.textContent = 'Sending…';
       msg.className = 'mc-msg';
 
-      // Mailchimp requires JSONP for browser cross-origin requests
       const url = MC_ACTION.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=_mcCb';
 
       const timeout = setTimeout(() => {
@@ -996,28 +1039,19 @@
       document.body.appendChild(s);
     });
 
-    // ── NAV HIGHLIGHT ON SCROLL ───────────────────────────
-    const sections = document.querySelectorAll('section[id]');
-    const links    = document.querySelectorAll('.nav-links a');
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(a => {
-            a.style.color = a.getAttribute('href') === '#' + e.target.id
-              ? 'rgba(212,180,122,0.9)' : '';
-          });
-        }
-      });
-    }, { threshold: 0.4 }).observe ? sections.forEach(s =>
+    // ── NAV HIGHLIGHT ON SCROLL ────────────────────
+    document.querySelectorAll('section[id]').forEach(section => {
       new IntersectionObserver(entries => {
         entries.forEach(e => {
-          if (e.isIntersecting)
-            links.forEach(a => {
-              a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'rgba(212,180,122,0.9)' : '';
+          if (e.isIntersecting) {
+            document.querySelectorAll('.nav-links a').forEach(a => {
+              a.style.color = a.getAttribute('href') === '#' + e.target.id
+                ? 'rgba(212,180,122,0.9)' : '';
             });
+          }
         });
-      }, { threshold: 0.4 }).observe(s)
-    ) : null;
+      }, { threshold: 0.4 }).observe(section);
+    });
   </script>
 
 </body>
