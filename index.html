@@ -1,979 +1,1024 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="VERSE ONE: The Shearer's Gospel — A 13-minute animated short film. A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up.">
-<meta property="og:title" content="VERSE ONE: The Shearer's Gospel">
-<meta property="og:description" content="A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up.">
-<meta property="og:url" content="https://theverseprojects.com">
-<meta property="og:type" content="website">
-<title>VERSE ONE: The Shearer's Gospel — The Verse Project</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
-<style>
-/* ── RESET & BASE ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --ink: #0B0907;
-  --parchment: #F2EDE4;
-  --gold: #B8975A;
-  --gold2: #D4AF6E;
-  --ash: #7A7570;
-  --dim: #2A2520;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--ink);
-  color: var(--parchment);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-  cursor: none;
-}
-
-/* ── CUSTOM CURSOR ── */
-.cursor {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-}
-@media (hover: none) { .cursor { display: none; } body { cursor: auto; } }
-
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 500;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 3.5rem;
-}
-
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
-  color: var(--parchment);
-  opacity: 0.9;
-  text-decoration: none;
-}
-
-.nav-right {
-  display: flex;
-  gap: 3rem;
-  list-style: none;
-}
-
-.nav-right a {
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(242, 237, 228, 0.45);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.nav-right a:hover { color: var(--gold2); }
-
-/* ── HERO ── */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-
-.hero-img {
-  position: absolute;
-  inset: 0;
-  background-image: url('./assets/hero.jpeg');
-  background-size: cover;
-  background-position: center top;
-  animation: slowZoom 20s ease-in-out infinite alternate;
-}
-
-/* NOTE: Replace the URL above with your own hosted image path e.g. ./assets/hero.jpg
-   once you move away from WordPress hosting. */
-
-@keyframes slowZoom {
-  from { transform: scale(1); }
-  to   { transform: scale(1.06); }
-}
-
-.hero-grad {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to top,
-      rgba(11,9,7,1)   0%,
-      rgba(11,9,7,0.7) 35%,
-      rgba(11,9,7,0.15) 65%,
-      rgba(11,9,7,0.5) 100%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 0 3.5rem 5rem;
-}
-
-.hero-tag {
-  font-size: 0.6rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-  display: block;
-  font-weight: 400;
-}
-
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5rem, 15vw, 14rem);
-  line-height: 0.88;
-  letter-spacing: 0.01em;
-  color: var(--parchment);
-  display: block;
-}
-
-.hero-title-em {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(2.5rem, 7vw, 7rem);
-  color: var(--gold2);
-  display: block;
-  line-height: 1;
-  margin-bottom: 0.3em;
-  letter-spacing: 0.02em;
-}
-
-.hero-title-sub {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 5vw, 5rem);
-  line-height: 0.9;
-  letter-spacing: 0.05em;
-  color: rgba(242, 237, 228, 0.35);
-  display: block;
-}
-
-.hero-desc-wrap {
-  position: absolute;
-  right: 3.5rem;
-  bottom: 5rem;
-  max-width: 260px;
-  text-align: right;
-  z-index: 2;
-}
-
-.hero-desc {
-  font-size: 0.78rem;
-  line-height: 1.9;
-  color: rgba(242, 237, 228, 0.6);
-  font-weight: 200;
-  letter-spacing: 0.04em;
-}
-
-.scroll-line {
-  position: absolute;
-  bottom: 0; left: 3.5rem;
-  width: 1px; height: 80px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  z-index: 2;
-}
-
-/* ── MARQUEE ── */
-.marquee-wrap {
-  overflow: hidden;
-  border-top: 1px solid rgba(184, 151, 90, 0.15);
-  border-bottom: 1px solid rgba(184, 151, 90, 0.15);
-  padding: 1.2rem 0;
-}
-
-.marquee-track {
-  display: flex;
-  animation: marqueeScroll 18s linear infinite;
-  white-space: nowrap;
-}
-
-.marquee-item {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.3em;
-  color: rgba(184, 151, 90, 0.5);
-  padding: 0 3rem;
-  flex-shrink: 0;
-}
-
-.marquee-dot { color: var(--gold); padding: 0 0.5rem; }
-
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ── STATEMENT ── */
-.statement {
-  padding: 10rem 3.5rem 8rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.statement-inner { max-width: 1100px; }
-
-.pull-line {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  line-height: 1.05;
-  color: var(--parchment);
-  letter-spacing: -0.01em;
-}
-.pull-line.dim  { color: rgba(242, 237, 228, 0.18); }
-.pull-line.gold { color: var(--gold2); }
-
-.statement-aside {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(184, 151, 90, 0.2);
-}
-
-.aside-block p {
-  font-size: 0.7rem;
-  line-height: 2;
-  color: rgba(242, 237, 228, 0.35);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.aside-block strong {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--parchment);
-  line-height: 1.6;
-}
-
-.bg-num {
-  position: absolute;
-  right: -2rem; top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(12rem, 25vw, 22rem);
-  color: rgba(184, 151, 90, 0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* ── STORY ── */
-.story {
-  padding: 8rem 3.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.story-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 2.5rem;
-  display: block;
-  font-weight: 400;
-}
-
-.story-big {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--parchment);
-  margin-bottom: 2rem;
-}
-.story-big em { font-style: italic; color: var(--gold2); font-weight: 400; }
-
-.story-body p {
-  font-size: 0.9rem;
-  line-height: 2;
-  color: rgba(242, 237, 228, 0.55);
-  margin-bottom: 1.2rem;
-  font-weight: 200;
-}
-
-.story-body p.highlight {
-  color: rgba(242, 237, 228, 0.85);
-  border-left: 2px solid var(--gold);
-  padding-left: 1.2rem;
-  font-style: italic;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-}
-
-/* Location list */
-.loc-grid {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(184, 151, 90, 0.15);
-}
-
-.loc-item {
-  padding: 1.8rem 2rem;
-  border-bottom: 1px solid rgba(184, 151, 90, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.4s;
-}
-.loc-item:last-child { border-bottom: none; }
-.loc-item:hover { background: rgba(184, 151, 90, 0.05); }
-
-.loc-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  color: rgba(184, 151, 90, 0.15);
-  line-height: 1;
-  flex-shrink: 0;
-  margin-right: 1.5rem;
-}
-
-.loc-info { flex: 1; }
-
-.loc-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  color: var(--parchment);
-  display: block;
-  margin-bottom: 0.2rem;
-}
-
-.loc-sub {
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(242, 237, 228, 0.3);
-}
-
-.loc-arrow {
-  font-size: 1.2rem;
-  color: rgba(184, 151, 90, 0.25);
-  transform: rotate(-45deg);
-  transition: all 0.3s;
-  display: inline-block;
-}
-.loc-item:hover .loc-arrow { color: var(--gold); transform: rotate(0deg); }
-
-/* ── SCRIPTURE ── */
-.scripture-wrap {
-  padding: 7rem 3.5rem;
-  text-align: center;
-  border-top: 1px solid rgba(184, 151, 90, 0.12);
-  position: relative;
-  overflow: hidden;
-}
-
-.scripture-bg-text {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(8rem, 20vw, 18rem);
-  color: rgba(184, 151, 90, 0.025);
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: 0.05em;
-}
-
-.scripture-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 2rem;
-  display: block;
-  font-weight: 400;
-}
-
-.scripture-quote {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
-  line-height: 1.5;
-  color: var(--parchment);
-  max-width: 700px;
-  margin: 0 auto 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.scripture-ref {
-  font-size: 0.6rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: rgba(184, 151, 90, 0.5);
-  position: relative;
-  z-index: 1;
-}
-
-/* ── PROGRESS ── */
-.progress { padding: 8rem 3.5rem; }
-
-.progress-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 5rem;
-  border-bottom: 1px solid rgba(184, 151, 90, 0.15);
-  padding-bottom: 2rem;
-}
-
-.progress-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 8vw, 7rem);
-  line-height: 0.9;
-  letter-spacing: 0.02em;
-  color: var(--parchment);
-}
-
-.progress-title span {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--gold2);
-  letter-spacing: 0.05em;
-  margin-top: 0.3em;
-}
-
-.progress-note {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  color: rgba(242, 237, 228, 0.3);
-  max-width: 200px;
-  text-align: right;
-  line-height: 1.7;
-  text-transform: uppercase;
-}
-
-.milestone-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0 3rem;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(184, 151, 90, 0.08);
-}
-.milestone-row:last-child { border-bottom: none; }
-
-.ms-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.6rem;
-  padding-top: 0.25rem;
-}
-
-.ms-status {
-  font-size: 0.55rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-.ms-status.done { color: var(--gold); }
-.ms-status.now  { color: #88C5A0; }
-.ms-status.soon { color: rgba(242, 237, 228, 0.25); }
-
-.ms-bar {
-  width: 40px; height: 1px;
-  background: rgba(184, 151, 90, 0.2);
-  position: relative;
-}
-.ms-bar::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; height: 100%;
-  background: var(--gold);
-}
-.ms-bar.full::before  { width: 100%; }
-.ms-bar.half::before  { width: 50%; }
-.ms-bar.none::before  { width: 0%; }
-
-.ms-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--parchment);
-  margin-bottom: 0.6rem;
-  display: block;
-}
-
-.ms-desc {
-  font-size: 0.8rem;
-  line-height: 1.9;
-  color: rgba(242, 237, 228, 0.45);
-  font-weight: 200;
-}
-
-/* Live pulse dot */
-.pulse {
-  display: inline-block;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: #88C5A0;
-  animation: blink 1.8s ease-in-out infinite;
-  margin-right: 0.4rem;
-  vertical-align: middle;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.2; }
-}
-
-/* ── FOLLOW ── */
-.follow {
-  padding: 8rem 3.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  border-top: 1px solid rgba(184, 151, 90, 0.12);
-}
-
-.follow-big {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 9vw, 8rem);
-  line-height: 0.88;
-  letter-spacing: 0.02em;
-  color: var(--parchment);
-  display: block;
-}
-
-.follow-big.italic {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(2rem, 6vw, 5.5rem);
-  color: var(--gold2);
-  letter-spacing: 0.02em;
-  margin-top: 0.1em;
-}
-
-.follow-sub {
-  font-size: 0.85rem;
-  line-height: 2;
-  color: rgba(242, 237, 228, 0.45);
-  margin-bottom: 2.5rem;
-  font-weight: 200;
-}
-
-.input-wrap {
-  border: 1px solid rgba(184, 151, 90, 0.3);
-  display: flex;
-  margin-bottom: 1rem;
-}
-
-.input-wrap input {
-  flex: 1;
-  padding: 1rem 1.2rem;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--parchment);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 200;
-  letter-spacing: 0.08em;
-}
-.input-wrap input::placeholder { color: rgba(242, 237, 228, 0.3); }
-
-.input-wrap button {
-  padding: 1rem 1.8rem;
-  background: var(--gold);
-  border: none;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  color: var(--ink);
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.input-wrap button:hover { background: var(--gold2); }
-
-.fine-print {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(242, 237, 228, 0.2);
-}
-
-/* ── FOOTER ── */
-footer {
-  padding: 2rem 3.5rem;
-  border-top: 1px solid rgba(184, 151, 90, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.foot-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  color: rgba(184, 151, 90, 0.4);
-}
-
-.foot-copy {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(242, 237, 228, 0.2);
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 1.5rem; }
-  .nav-right { display: none; }
-
-  .hero-content { padding: 0 1.5rem 4rem; }
-  .hero-desc-wrap { display: none; }
-
-  .statement { padding: 5rem 1.5rem; }
-  .statement-aside { grid-template-columns: 1fr; gap: 2rem; }
-
-  .story {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 5rem 1.5rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO — PRIMARY META
+  ══════════════════════════════════════════════ -->
+  <title>VERSE ONE: The Shearer's Gospel — Animated Faith Film | The Verse Project</title>
+  <meta name="description" content="A 13-minute animated short film. A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up. An animated faith film in development — The Verse Project." />
+  <meta name="keywords" content="animated faith film, Christian animation, animated short film, faith storytelling, British Nigerian film, VERSE ONE, The Verse Project, gospel animation, festival film, animated movie 2026" />
+  <meta name="author" content="The Verse Project" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.theverseprojects.com/" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO — OPEN GRAPH
+  ══════════════════════════════════════════════ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.theverseprojects.com/" />
+  <meta property="og:title" content="VERSE ONE: The Shearer's Gospel — Animated Faith Film" />
+  <meta property="og:description" content="A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up. A 13-minute animated short film in development." />
+  <meta property="og:image" content="https://www.theverseprojects.com/assets/hero.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="The Verse Project" />
+  <meta property="og:locale" content="en_GB" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO — TWITTER CARD
+  ══════════════════════════════════════════════ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VERSE ONE: The Shearer's Gospel" />
+  <meta name="twitter:description" content="A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up." />
+  <meta name="twitter:image" content="https://www.theverseprojects.com/assets/hero.jpeg" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO — STRUCTURED DATA
+  ══════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Movie",
+    "name": "VERSE ONE: The Shearer's Gospel",
+    "description": "A 13-minute animated short film. A cynical British-Nigerian teenager challenges Jesus to an interview. Jesus shows up.",
+    "productionCompany": {
+      "@type": "Organization",
+      "name": "The Verse Project",
+      "url": "https://www.theverseprojects.com"
+    },
+    "genre": ["Animation","Drama","Faith","Short Film"],
+    "inLanguage": "en",
+    "url": "https://www.theverseprojects.com"
   }
+  </script>
 
-  .scripture-wrap { padding: 5rem 1.5rem; }
+  <!-- ═══════════════════════════════════════════
+       VERCEL WEB ANALYTICS
+  ══════════════════════════════════════════════ -->
+  <script>window.va = window.va || function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 
-  .progress { padding: 5rem 1.5rem; }
-  .progress-head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .progress-note { text-align: left; max-width: 100%; }
-  .milestone-row { grid-template-columns: 90px 1fr; gap: 0 1.5rem; }
+  <!-- ═══════════════════════════════════════════
+       PERFORMANCE — FONT & IMAGE PRELOAD
+  ══════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Unbounded:wght@200;300;400;700&family=DM+Sans:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="./assets/hero.jpeg" />
 
-  .follow {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 5rem 1.5rem;
-  }
+  <style>
+    /* ── RESET ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  footer { padding: 2rem 1.5rem; }
-}
-</style>
+    :root {
+      --ink:       #090806;
+      --ink2:      #0f0d0b;
+      --cream:     #ECE7DD;
+      --cream2:    #D7D0C3;
+      --gold:      #BF9A5C;
+      --gold-lt:   #D4B47A;
+      --muted:     rgba(236,231,221,0.42);
+      --faint:     rgba(236,231,221,0.14);
+      --border:    rgba(191,154,92,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ── NAV ──────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.6rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(9,8,6,0.9), transparent);
+    }
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 200;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.82;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('./assets/hero.jpeg');
+      background-size: cover;
+      /* Desktop: pull right so subject is visible alongside left-anchored type */
+      background-position: 62% center;
+      animation: slowpan 24s ease-in-out infinite alternate;
+    }
+    @keyframes slowpan {
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.05) translateX(-1.5%); }
+    }
+
+    /* Dark from top, clear in middle, heavy at base */
+    .hero-fade {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg,
+        rgba(9,8,6,0.82)  0%,
+        rgba(9,8,6,0.12) 28%,
+        rgba(9,8,6,0.06) 46%,
+        rgba(9,8,6,0.55) 72%,
+        rgba(9,8,6,1.00) 100%
+      );
+    }
+    /* Left tint so type sits on dark always */
+    .hero-side {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(9,8,6,0.62) 0%, transparent 52%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 3rem 4rem;
+    }
+
+    .hero-label {
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+      display: block; flex-shrink: 0;
+    }
+
+    .hero-t1 {
+      display: block;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: clamp(5.5rem, 17vw, 15rem);
+      line-height: 0.86;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+    .hero-t2 {
+      display: block;
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2rem, 6vw, 6.2rem);
+      letter-spacing: 0.06em;
+      color: var(--gold-lt);
+      line-height: 1.1;
+      margin-top: 0.1em;
+    }
+    .hero-t3 {
+      display: block;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 200;
+      font-size: clamp(0.55rem, 1.5vw, 1rem);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(236,231,221,0.3);
+      margin-top: 1.2rem;
+    }
+
+    /* Bottom-right descriptor — desktop only */
+    .hero-aside {
+      position: absolute;
+      right: 3rem; bottom: 4rem;
+      z-index: 2;
+      max-width: 210px;
+      text-align: right;
+    }
+    .hero-aside p {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(236,231,221,0.62);
+    }
+    .hero-aside em {
+      display: block;
+      font-style: normal;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.9rem;
+    }
+
+    .hero-line {
+      position: absolute;
+      left: 3rem; bottom: 0;
+      width: 1px; height: 65px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      z-index: 2;
+    }
+
+    /* ── TICKER ───────────────────────────────── */
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+    }
+    .ticker-track {
+      display: flex;
+      animation: tick 22s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 200;
+      font-size: 0.58rem;
+      letter-spacing: 0.32em;
+      color: rgba(191,154,92,0.42);
+      padding: 0 2.2rem;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+    .ticker-sep { color: var(--gold); margin-left: 2.2rem; }
+    @keyframes tick {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION TAG ──────────────────────────── */
+    .stag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+    .stag::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--gold);
+      display: block;
+    }
+
+    /* ── STATEMENT ────────────────────────────── */
+    .statement {
+      padding: 8rem 3rem 7rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .stmt-bg {
+      position: absolute;
+      right: -1rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: clamp(10rem, 22vw, 20rem);
+      color: rgba(191,154,92,0.03);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .quote-stack { max-width: 1000px; }
+    .ql {
+      display: block;
+      font-family: 'Cormorant', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(2.2rem, 5.2vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+    .ql.faint  { color: rgba(236,231,221,0.14); }
+    .ql.mid    { color: rgba(236,231,221,0.48); }
+    .ql.bright { color: var(--cream); }
+    .ql.gold   { color: var(--gold-lt); }
+
+    .stmt-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      margin-top: 5rem;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+    .sg-cell {
+      padding: 2.2rem 2rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .sg-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.56rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(191,154,92,0.48);
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+    .sg-value {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.65;
+    }
+
+    /* ── STORY ────────────────────────────────── */
+    .story {
+      padding: 8rem 3rem;
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 5rem;
+      align-items: start;
+      border-top: 1px solid var(--border);
+    }
+    .story-h {
+      font-family: 'Cormorant', serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.12;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+    .story-h em { font-style: italic; color: var(--gold-lt); font-weight: 400; }
+    .story-p {
+      font-size: 0.87rem;
+      line-height: 2.1;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-weight: 200;
+    }
+    .story-pull {
+      border-left: 1px solid var(--gold);
+      padding-left: 1.4rem;
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(236,231,221,0.88);
+      margin-bottom: 1.4rem;
+    }
+
+    /* Location table */
+    .loc-table { border: 1px solid var(--border); }
+    .loc-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 22px;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.6rem 1.8rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.35s;
+    }
+    .loc-row:last-child { border-bottom: none; }
+    .loc-row:hover { background: rgba(191,154,92,0.04); }
+    .loc-n {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 200;
+      font-size: 1.4rem;
+      color: rgba(191,154,92,0.13);
+      line-height: 1;
+    }
+    .loc-name {
+      font-family: 'Cormorant', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .loc-sub {
+      font-size: 0.57rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(236,231,221,0.26);
+    }
+    .loc-arr {
+      color: rgba(191,154,92,0.2);
+      font-size: 0.9rem;
+      transform: rotate(-45deg);
+      transition: all 0.3s;
+      display: block;
+    }
+    .loc-row:hover .loc-arr { color: var(--gold); transform: rotate(0); }
+
+    /* ── SCRIPTURE ────────────────────────────── */
+    .verse {
+      padding: 7rem 3rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .verse-bg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: clamp(8rem, 20vw, 18rem);
+      color: rgba(191,154,92,0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 0.08em;
+    }
+    .verse-q {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      line-height: 1.62;
+      color: var(--cream);
+      max-width: 660px;
+      margin: 2rem auto 1.5rem;
+      position: relative; z-index: 1;
+    }
+    .verse-ref {
+      font-size: 0.56rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(191,154,92,0.42);
+      position: relative; z-index: 1;
+    }
+
+    /* ── PROGRESS ─────────────────────────────── */
+    .progress { padding: 8rem 3rem; border-top: 1px solid var(--border); }
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-title {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 9vw, 8.5rem);
+      line-height: 0.86;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .progress-title span {
+      display: block;
+      font-family: 'Cormorant', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--gold-lt);
+      letter-spacing: 0.04em;
+      margin-top: 0.5em;
+    }
+    .progress-note {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--faint);
+      max-width: 175px;
+      text-align: right;
+      line-height: 1.85;
+    }
+
+    .ms {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(191,154,92,0.07);
+    }
+    .ms:last-child { border-bottom: none; }
+    .ms-meta { display: flex; flex-direction: column; gap: 0.75rem; padding-top: 0.2rem; }
+    .ms-status {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    .ms-status.done { color: var(--gold); }
+    .ms-status.live { color: #82C9A2; }
+    .ms-status.next { color: rgba(236,231,221,0.2); }
+    .ms-bar {
+      width: 36px; height: 1px;
+      background: rgba(191,154,92,0.15);
+      position: relative;
+    }
+    .ms-bar::before { content:''; position:absolute; left:0; top:0; height:100%; background:var(--gold); }
+    .ms-bar.full::before { width:100%; }
+    .ms-bar.half::before { width:50%; background:#82C9A2; }
+    .ms-bar.zero::before { width:0; }
+    .ms-title {
+      font-family: 'Cormorant', serif;
+      font-size: 1.28rem;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .ms-body {
+      font-size: 0.8rem;
+      line-height: 2;
+      color: rgba(236,231,221,0.4);
+      font-weight: 200;
+    }
+    .pulse {
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #82C9A2;
+      animation: blink 2s ease-in-out infinite;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.15} }
+
+    /* ── FOLLOW ───────────────────────────────── */
+    .follow {
+      padding: 8rem 3rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .follow-title {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 8vw, 7.5rem);
+      line-height: 0.86;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .follow-title em {
+      display: block;
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2rem, 6vw, 6rem);
+      color: var(--gold-lt);
+      letter-spacing: 0.02em;
+      margin-top: 0.1em;
+    }
+    .follow-desc {
+      font-size: 0.85rem;
+      line-height: 2.1;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-weight: 200;
+    }
+
+    /* Email form */
+    .mc-msg {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(236,231,221,0.3);
+      display: block;
+      min-height: 1.2em;
+      margin-bottom: 0.6rem;
+    }
+    .mc-msg.ok  { color: #82C9A2; }
+    .mc-msg.err { color: #C97A7A; }
+
+    .mc-row {
+      display: flex;
+      border: 1px solid rgba(191,154,92,0.26);
+      background: rgba(191,154,92,0.025);
+      margin-bottom: 1rem;
+    }
+    .mc-row input {
+      flex: 1;
+      padding: 1.1rem 1.3rem;
+      background: transparent;
+      border: none; outline: none;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 200;
+      letter-spacing: 0.06em;
+    }
+    .mc-row input::placeholder { color: rgba(236,231,221,0.26); }
+    .mc-row button {
+      padding: 1.1rem 2rem;
+      background: var(--gold);
+      border: none;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 300;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .mc-row button:hover { background: var(--gold-lt); }
+    .mc-row button:disabled { opacity: 0.5; cursor: default; }
+
+    .fine {
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(236,231,221,0.18);
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(191,154,92,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .foot-brand {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 200;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      color: rgba(191,154,92,0.32);
+      text-transform: uppercase;
+    }
+    .foot-copy {
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(236,231,221,0.18);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+
+      /* Mobile hero fixes:
+         - Center the image so subject stays in frame regardless of crop
+         - Kill animation for performance
+         - Stronger base gradient so type is always readable */
+      .hero-bg {
+        background-position: center center;
+        animation: none;
+      }
+      .hero-fade {
+        background: linear-gradient(180deg,
+          rgba(9,8,6,0.88) 0%,
+          rgba(9,8,6,0.25) 26%,
+          rgba(9,8,6,0.15) 44%,
+          rgba(9,8,6,0.72) 70%,
+          rgba(9,8,6,1.00) 100%
+        );
+      }
+      .hero-content { padding: 0 1.5rem 3.5rem; }
+      .hero-aside   { display: none; }
+      .hero-line    { left: 1.5rem; }
+      .hero-t1      { font-size: clamp(4rem, 22vw, 7rem); }
+
+      .statement,
+      .verse,
+      .progress { padding: 5rem 1.5rem; }
+
+      .stmt-grid { grid-template-columns: 1fr; }
+
+      .story {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 5rem 1.5rem;
+      }
+
+      .follow {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 5rem 1.5rem;
+      }
+
+      .progress-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      .progress-note { text-align: left; max-width: 100%; }
+      .ms { grid-template-columns: 82px 1fr; gap: 0 1.5rem; }
+
+      footer { padding: 1.5rem; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-t1 { font-size: 3.6rem; }
+      .hero-t2 { font-size: 1.7rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="cursor" id="cur"></div>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">The Verse Project</a>
+    <ul class="nav-links">
+      <li><a href="#story">The Story</a></li>
+      <li><a href="#progress">In Development</a></li>
+      <li><a href="#follow">Follow</a></li>
+    </ul>
+  </nav>
 
-<!-- ── NAV ── -->
-<nav>
-  <a href="#" class="nav-logo">The Verse Project</a>
-  <ul class="nav-right">
-    <li><a href="#story">The Story</a></li>
-    <li><a href="#progress">In Development</a></li>
-    <li><a href="#follow">Follow</a></li>
-  </ul>
-</nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="Concept art — The Shearer, VERSE ONE"></div>
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="hero-side"  aria-hidden="true"></div>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-img" role="img" aria-label="The Shearer — concept art for VERSE ONE"></div>
-  <div class="hero-grad"></div>
-
-  <div class="hero-content">
-    <span class="hero-tag">An Animated Film &nbsp;·&nbsp; In Development &nbsp;·&nbsp; 2026</span>
-    <span class="hero-title">VERSE</span>
-    <span class="hero-title-em">One</span>
-    <span class="hero-title-sub">The Shearer's Gospel</span>
-  </div>
-
-  <div class="hero-desc-wrap">
-    <p class="hero-desc">A cynical British-Nigerian<br>teenager challenges Jesus<br>to an interview.<br><br>Jesus shows up.</p>
-  </div>
-
-  <div class="scroll-line"></div>
-</section>
-
-<!-- ── MARQUEE ── -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Animated Short Film<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">13 Minutes<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Original Screenplay<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Three Continents<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Faith Storytelling<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Festival Circuit<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Animated Short Film<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">13 Minutes<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Original Screenplay<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Three Continents<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Faith Storytelling<span class="marquee-dot">·</span></span>
-    <span class="marquee-item">Festival Circuit<span class="marquee-dot">·</span></span>
-  </div>
-</div>
-
-<!-- ── STATEMENT ── -->
-<section class="statement">
-  <div class="bg-num" aria-hidden="true">01</div>
-  <div class="statement-inner">
-    <span class="pull-line dim">"What if the gospel</span>
-    <span class="pull-line">wasn't a religion</span>
-    <span class="pull-line dim">you inherited —</span>
-    <span class="pull-line gold">but an encounter</span>
-    <span class="pull-line">you couldn't outrun?"</span>
-  </div>
-  <div class="statement-aside">
-    <div class="aside-block">
-      <p>Format</p>
-      <strong>13-minute animated short.<br>Festival-ready. Globally distributable.</strong>
+    <div class="hero-content">
+      <span class="hero-label">Animated Film &nbsp;·&nbsp; In Development &nbsp;·&nbsp; 2026</span>
+      <span class="hero-t1">VERSE</span>
+      <span class="hero-t2">One</span>
+      <span class="hero-t3">The Shearer's Gospel</span>
     </div>
-    <div class="aside-block">
-      <p>Why Animation</p>
-      <strong>No borders. No restrictions.<br>Wherever the internet reaches.</strong>
-    </div>
-  </div>
-</section>
 
-<!-- ── STORY ── -->
-<section class="story" id="story">
-  <div class="story-left">
-    <span class="story-label">The Story</span>
-    <h2 class="story-big">When Jesus <em>actually</em><br>shows up</h2>
-    <div class="story-body">
-      <p>Ebun is 17, British-Nigerian, and deeply unimpressed with inherited faith. As a podcaster, he does what no one has dared — posts an open invitation for Jesus to come on the show.</p>
-      <p class="highlight">Jesus arrives. In a leather jacket.</p>
-      <p>What follows is a chase through time and space — from a war-torn street in Syria to the silence of the South African veldt — ending in an otherworldly shearing barn where Ebun confronts the spiritual captivity he never knew he was in.</p>
-      <p>This is the gospel. Unfiltered. Multicultural. Impossible to ignore.</p>
+    <div class="hero-aside" aria-hidden="true">
+      <p>A cynical British-Nigerian teenager challenges Jesus to an interview.</p>
+      <p style="margin-top:0.5rem;font-style:normal;font-family:'DM Sans',sans-serif;font-weight:200;font-size:0.78rem;letter-spacing:0.08em;color:rgba(236,231,221,0.52)">Jesus shows up.</p>
+      <em>The Shearer's Gospel</em>
+    </div>
+
+    <div class="hero-line" aria-hidden="true"></div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Animated Short Film<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">13 Minutes<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Original Screenplay Complete<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Three Continents<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Faith Storytelling<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Festival Circuit<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">In Development<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Animated Short Film<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">13 Minutes<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Original Screenplay Complete<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Three Continents<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Faith Storytelling<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">Festival Circuit<span class="ticker-sep">·</span></span>
+      <span class="ticker-item">In Development<span class="ticker-sep">·</span></span>
     </div>
   </div>
 
-  <div class="story-right">
-    <div class="loc-grid">
-      <div class="loc-item">
-        <span class="loc-num">01</span>
-        <div class="loc-info">
-          <span class="loc-name">London</span>
-          <span class="loc-sub">Where the challenge is made</span>
-        </div>
-        <span class="loc-arrow" aria-hidden="true">↗</span>
+  <!-- STATEMENT -->
+  <section class="statement" aria-label="The Vision">
+    <div class="stmt-bg" aria-hidden="true">01</div>
+    <div class="quote-stack">
+      <span class="ql faint">"What if the gospel</span>
+      <span class="ql bright">wasn't a religion</span>
+      <span class="ql mid">you inherited —</span>
+      <span class="ql gold">but an encounter</span>
+      <span class="ql bright">you couldn't outrun?"</span>
+    </div>
+    <div class="stmt-grid">
+      <div class="sg-cell">
+        <span class="sg-label">Format</span>
+        <span class="sg-value">13-minute animated short. Festival-ready. Globally distributable.</span>
       </div>
-      <div class="loc-item">
-        <span class="loc-num">02</span>
-        <div class="loc-info">
-          <span class="loc-name">Syria</span>
-          <span class="loc-sub">Where everything breaks open</span>
-        </div>
-        <span class="loc-arrow" aria-hidden="true">↗</span>
+      <div class="sg-cell">
+        <span class="sg-label">Why Animation</span>
+        <span class="sg-value">No borders. No restrictions. Wherever the internet reaches.</span>
       </div>
-      <div class="loc-item">
-        <span class="loc-num">03</span>
-        <div class="loc-info">
-          <span class="loc-name">South Africa</span>
-          <span class="loc-sub">Where the veldt holds its breath</span>
-        </div>
-        <span class="loc-arrow" aria-hidden="true">↗</span>
-      </div>
-      <div class="loc-item">
-        <span class="loc-num">04</span>
-        <div class="loc-info">
-          <span class="loc-name">The Shearing Barn</span>
-          <span class="loc-sub">Where no map can take you</span>
-        </div>
-        <span class="loc-arrow" aria-hidden="true">↗</span>
+      <div class="sg-cell">
+        <span class="sg-label">The Commission</span>
+        <span class="sg-value">Go and make disciples of all nations. Matthew 28:19.</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── SCRIPTURE ── -->
-<section class="scripture-wrap">
-  <div class="scripture-bg-text" aria-hidden="true">GO</div>
-  <span class="scripture-label">The Commission</span>
-  <blockquote class="scripture-quote">
-    "Go and make disciples of all nations — I am with you always, to the very end of the age."
-  </blockquote>
-  <span class="scripture-ref">Matthew 28:19–20 &nbsp;·&nbsp; The mission behind VERSE ONE</span>
-</section>
+  <!-- STORY -->
+  <section class="story" id="story" aria-label="The Story">
+    <div>
+      <span class="stag">The Story</span>
+      <h1 class="story-h">When Jesus <em>actually</em> shows&nbsp;up</h1>
+      <p class="story-p">Ebun is 17, British-Nigerian, and deeply unimpressed with inherited faith. As a podcaster, he does what no one has dared — posts an open invitation for Jesus to come on the show.</p>
+      <p class="story-pull">Jesus arrives. In a leather jacket.</p>
+      <p class="story-p">What follows is a chase through time and space — from a war-torn street in Syria to the silence of the South African veldt — ending in an otherworldly shearing barn where Ebun confronts the spiritual captivity he never knew he was in.</p>
+      <p class="story-p">This is the gospel. Unfiltered. Multicultural. Impossible to ignore.</p>
+    </div>
+    <div class="loc-table">
+      <div class="loc-row">
+        <span class="loc-n">01</span>
+        <div><span class="loc-name">London</span><span class="loc-sub">Where the challenge is made</span></div>
+        <span class="loc-arr" aria-hidden="true">↗</span>
+      </div>
+      <div class="loc-row">
+        <span class="loc-n">02</span>
+        <div><span class="loc-name">Syria</span><span class="loc-sub">Where everything breaks open</span></div>
+        <span class="loc-arr" aria-hidden="true">↗</span>
+      </div>
+      <div class="loc-row">
+        <span class="loc-n">03</span>
+        <div><span class="loc-name">South Africa</span><span class="loc-sub">Where the veldt holds its breath</span></div>
+        <span class="loc-arr" aria-hidden="true">↗</span>
+      </div>
+      <div class="loc-row">
+        <span class="loc-n">04</span>
+        <div><span class="loc-name">The Shearing Barn</span><span class="loc-sub">Where no map can take you</span></div>
+        <span class="loc-arr" aria-hidden="true">↗</span>
+      </div>
+    </div>
+  </section>
 
-<!-- ── PROGRESS ── -->
-<section class="progress" id="progress">
-  <div class="progress-head">
-    <div class="progress-title">
-      IN<br>MOTION
-      <span>Where we are now</span>
-    </div>
-    <p class="progress-note">The film is being<br>built. This is what<br>exists today.</p>
-  </div>
+  <!-- SCRIPTURE -->
+  <section class="verse" aria-label="The Commission">
+    <div class="verse-bg" aria-hidden="true">GO</div>
+    <span class="stag" style="justify-content:center">The Commission</span>
+    <blockquote class="verse-q">"Go and make disciples of all nations — I am with you always, to the very end of the age."</blockquote>
+    <span class="verse-ref">Matthew 28:19–20 &nbsp;·&nbsp; The mission behind VERSE ONE</span>
+  </section>
 
-  <div class="milestone-row">
-    <div class="ms-left">
-      <span class="ms-status done">Complete</span>
-      <div class="ms-bar full"></div>
+  <!-- PROGRESS -->
+  <section class="progress" id="progress" aria-label="Production progress">
+    <div class="progress-head">
+      <div class="progress-title">IN<br>MOTION<span>Where we are now</span></div>
+      <p class="progress-note">The film is being built. This is what exists today.</p>
     </div>
-    <div class="ms-right">
-      <span class="ms-title">Original Screenplay</span>
-      <span class="ms-desc">The full script is written. Ebun's story, the dialogue, the three worlds — all of it exists on the page. This is not an idea. It is a film waiting to be made.</span>
-    </div>
-  </div>
 
-  <div class="milestone-row">
-    <div class="ms-left">
-      <span class="ms-status done">Complete</span>
-      <div class="ms-bar full"></div>
+    <div class="ms">
+      <div class="ms-meta"><span class="ms-status done">Complete</span><div class="ms-bar full"></div></div>
+      <div><span class="ms-title">Original Screenplay</span><span class="ms-body">The full script is written. Ebun's story, the dialogue, the three worlds — all of it exists on the page. This is not an idea. It is a film waiting to be made.</span></div>
     </div>
-    <div class="ms-right">
-      <span class="ms-title">Investment Structure</span>
-      <span class="ms-desc">A formal SPV has been established. The legal and financial architecture is in place for production to begin the moment we are ready.</span>
+    <div class="ms">
+      <div class="ms-meta"><span class="ms-status done">Complete</span><div class="ms-bar full"></div></div>
+      <div><span class="ms-title">Investment Structure</span><span class="ms-body">A formal SPV has been established. The legal and financial architecture is in place for production to begin the moment we are ready.</span></div>
     </div>
-  </div>
+    <div class="ms">
+      <div class="ms-meta"><span class="ms-status live"><span class="pulse"></span>Active</span><div class="ms-bar half"></div></div>
+      <div><span class="ms-title">Character Development</span><span class="ms-body">Ebun, the Shepherd, and the visual language of VERSE ONE are taking shape. The look of the film is being defined.</span></div>
+    </div>
+    <div class="ms">
+      <div class="ms-meta"><span class="ms-status live"><span class="pulse"></span>Active</span><div class="ms-bar half"></div></div>
+      <div><span class="ms-title">Production Team</span><span class="ms-body">Bringing together the animators, voice directors, and creative collaborators who will carry this story into motion.</span></div>
+    </div>
+    <div class="ms">
+      <div class="ms-meta"><span class="ms-status next">Next</span><div class="ms-bar zero"></div></div>
+      <div><span class="ms-title">Storyboard &amp; Voice Recording</span><span class="ms-body">The moment the screenplay becomes a film. Every frame mapped. Every line spoken into existence.</span></div>
+    </div>
+    <div class="ms">
+      <div class="ms-meta"><span class="ms-status next">Ahead</span><div class="ms-bar zero"></div></div>
+      <div><span class="ms-title">Festival Circuit &amp; Distribution</span><span class="ms-body">Annecy. Sundance. SXSW. And then — everywhere the internet reaches.</span></div>
+    </div>
+  </section>
 
-  <div class="milestone-row">
-    <div class="ms-left">
-      <span class="ms-status now"><span class="pulse"></span>Active</span>
-      <div class="ms-bar half"></div>
+  <!-- FOLLOW -->
+  <section class="follow" id="follow" aria-label="Follow the journey">
+    <div>
+      <div class="follow-title">FOLLOW<br>THE<em>Journey</em></div>
     </div>
-    <div class="ms-right">
-      <span class="ms-title">Character Development</span>
-      <span class="ms-desc">Ebun, the Shepherd, and the visual language of VERSE ONE are taking shape. The look of the film is being defined.</span>
+    <div>
+      <p class="follow-desc">Be the first to see Ebun's world come to life — character reveals, behind-the-scenes moments, and news from the making of VERSE ONE. No noise. Only what matters.</p>
+
+      <!--
+      ══════════════════════════════════════════════
+      MAILCHIMP SETUP — 3 STEPS:
+      1. Mailchimp → Audience → Signup forms → Embedded forms
+      2. Copy the action URL (looks like):
+         https://yourname.us1.list-manage.com/subscribe/post?u=XXXX&id=XXXX
+      3. Paste it as the value of MC_ACTION in the script below.
+
+      NOTION SYNC — easiest options:
+      • Zapier: "New Mailchimp Subscriber" → "Create Notion Database Item" (free tier, 5 min setup)
+      • Make.com: same flow, also free tier
+      • Ask me to build a Vercel serverless function that posts direct to Notion API — no third party needed
+      ══════════════════════════════════════════════
+      -->
+
+      <span id="mc-msg" class="mc-msg" aria-live="polite"></span>
+      <div class="mc-row">
+        <input type="email" id="mc-email" placeholder="Your email address" aria-label="Email address" autocomplete="email" />
+        <button id="mc-btn" type="button">Follow</button>
+      </div>
+      <span class="fine">Unsubscribe anytime. No spam, ever.</span>
     </div>
-  </div>
+  </section>
 
-  <div class="milestone-row">
-    <div class="ms-left">
-      <span class="ms-status now"><span class="pulse"></span>Active</span>
-      <div class="ms-bar half"></div>
-    </div>
-    <div class="ms-right">
-      <span class="ms-title">Production Team</span>
-      <span class="ms-desc">Bringing together the animators, voice directors, and creative collaborators who will carry this story into motion.</span>
-    </div>
-  </div>
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-brand">VERSE ONE: The Shearer's Gospel &nbsp;·&nbsp; The Verse Project</span>
+    <span class="foot-copy">© 2026 The Verse Project. All rights reserved.</span>
+  </footer>
 
-  <div class="milestone-row">
-    <div class="ms-left">
-      <span class="ms-status soon">Next</span>
-      <div class="ms-bar none"></div>
-    </div>
-    <div class="ms-right">
-      <span class="ms-title">Storyboard &amp; Voice Recording</span>
-      <span class="ms-desc">The moment the screenplay becomes a film. Every frame mapped. Every line spoken into existence.</span>
-    </div>
-  </div>
+  <script>
+    // ── MAILCHIMP ─────────────────────────────────────────
+    // Paste your full Mailchimp action URL here:
+    const MC_ACTION = 'https://YOURNAME.us1.list-manage.com/subscribe/post?u=XXXXXXXXXXXXXXXX&id=XXXXXXXXXX';
 
-  <div class="milestone-row">
-    <div class="ms-left">
-      <span class="ms-status soon">Ahead</span>
-      <div class="ms-bar none"></div>
-    </div>
-    <div class="ms-right">
-      <span class="ms-title">Festival Circuit &amp; Distribution</span>
-      <span class="ms-desc">Annecy. Sundance. SXSW. And then — everywhere the internet reaches.</span>
-    </div>
-  </div>
-</section>
+    const btn = document.getElementById('mc-btn');
+    const inp = document.getElementById('mc-email');
+    const msg = document.getElementById('mc-msg');
 
-<!-- ── FOLLOW ── -->
-<section class="follow" id="follow">
-  <div class="follow-left">
-    <span class="follow-big">FOLLOW</span>
-    <span class="follow-big">THE</span>
-    <span class="follow-big italic">Journey</span>
-  </div>
-  <div class="follow-right">
-    <p class="follow-sub">Be the first to see Ebun's world come to life — character reveals, behind-the-scenes, and moments from the making of VERSE ONE. No noise. Only what matters.</p>
-    <!-- 
-      TO CONNECT YOUR EMAIL LIST:
-      Replace the form action below with your Mailchimp / ConvertKit / Brevo embed URL,
-      or wire the button click to your preferred provider's JS SDK.
-    -->
-    <div class="input-wrap">
-      <input type="email" id="email-input" placeholder="Your email address" aria-label="Email address" />
-      <button type="button" onclick="handleSignup()">Follow</button>
-    </div>
-    <span class="fine-print">Unsubscribe anytime. No spam, ever.</span>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <span class="foot-brand">VERSE ONE: The Shearer's Gospel &nbsp;·&nbsp; The Verse Project</span>
-  <span class="foot-copy">© 2026 The Verse Project. All rights reserved.</span>
-</footer>
-
-<script>
-  /* ── Custom cursor ── */
-  const cur = document.getElementById('cur');
-  document.addEventListener('mousemove', e => {
-    cur.style.left = e.clientX + 'px';
-    cur.style.top  = e.clientY + 'px';
-  });
-
-  /* ── Email signup placeholder ──
-     Replace this function body with your email provider's submission logic.
-     e.g. Mailchimp: post to their embed action URL
-          ConvertKit: use their JS embed
-          Brevo: use their form SDK                                          */
-  function handleSignup() {
-    const input = document.getElementById('email-input');
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) {
-      input.style.borderBottom = '1px solid #B8975A';
-      input.focus();
-      return;
-    }
-    // ── REPLACE BELOW with your provider's API call ──
-    console.log('Signup:', email);
-    input.value = '';
-    input.placeholder = 'You\'re on the list. We\'ll be in touch.';
-    // ─────────────────────────────────────────────────
-  }
-
-  /* ── Smooth nav highlight on scroll ── */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-right a');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => {
-          a.style.color = a.getAttribute('href') === '#' + entry.target.id
-            ? 'rgba(212,175,110,0.9)'
-            : 'rgba(242,237,228,0.45)';
-        });
+    btn.addEventListener('click', () => {
+      const email = inp.value.trim();
+      if (!email || !email.includes('@')) {
+        msg.textContent = 'Please enter a valid email.';
+        msg.className = 'mc-msg err';
+        inp.focus();
+        return;
       }
-    });
-  }, { threshold: 0.4 });
+      btn.disabled = true;
+      msg.textContent = 'Sending…';
+      msg.className = 'mc-msg';
 
-  sections.forEach(s => observer.observe(s));
-</script>
+      // Mailchimp requires JSONP for browser cross-origin requests
+      const url = MC_ACTION.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=_mcCb';
+
+      const timeout = setTimeout(() => {
+        msg.textContent = 'Something went wrong. Please try again.';
+        msg.className = 'mc-msg err';
+        btn.disabled = false;
+      }, 8000);
+
+      window._mcCb = (data) => {
+        clearTimeout(timeout);
+        if (data.result === 'success') {
+          inp.value = '';
+          msg.textContent = "You're on the list — we'll be in touch.";
+          msg.className = 'mc-msg ok';
+          if (window.va) window.va('event', { name: 'email_signup' });
+        } else {
+          msg.textContent = data.msg || 'Something went wrong. Please try again.';
+          msg.className = 'mc-msg err';
+          btn.disabled = false;
+        }
+      };
+
+      const s = document.createElement('script');
+      s.src = url;
+      document.body.appendChild(s);
+    });
+
+    // ── NAV HIGHLIGHT ON SCROLL ───────────────────────────
+    const sections = document.querySelectorAll('section[id]');
+    const links    = document.querySelectorAll('.nav-links a');
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + e.target.id
+              ? 'rgba(212,180,122,0.9)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 }).observe ? sections.forEach(s =>
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting)
+            links.forEach(a => {
+              a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'rgba(212,180,122,0.9)' : '';
+            });
+        });
+      }, { threshold: 0.4 }).observe(s)
+    ) : null;
+  </script>
 
 </body>
 </html>
