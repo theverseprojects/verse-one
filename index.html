@@ -693,86 +693,68 @@
     }
 
     /* ── RESPONSIVE ───────────────────────────── */
-   @media (max-width: 768px) {
-  nav { padding: 1.2rem 1.5rem; }
-  .nav-links { display: none; }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
 
-  /* Fix horizontal overflow — black gutter gone */
-  html, body { overflow-x: hidden; }
-  .stmt-bg, .verse-bg { display: none; }
-  .ticker { overflow: hidden; max-width: 100vw; }
+      /* Mobile hero fixes:
+         - Center the image so subject stays in frame regardless of crop
+         - Kill animation for performance
+         - Stronger base gradient so type is always readable */
+      .hero-bg {
+        background-position: center center;
+        animation: none;
+      }
+      .hero-fade {
+        background: linear-gradient(180deg,
+          rgba(9,8,6,0.88) 0%,
+          rgba(9,8,6,0.25) 26%,
+          rgba(9,8,6,0.15) 44%,
+          rgba(9,8,6,0.72) 70%,
+          rgba(9,8,6,1.00) 100%
+        );
+      }
+      .hero-content { padding: 0 1.5rem 3.5rem; }
+      .hero-aside   { display: none; }
+      .hero-line    { left: 1.5rem; }
+      .hero-t1      { font-size: clamp(4rem, 22vw, 7rem); }
 
-  /* Hero: full height, title at TOP, figures visible below */
-  .hero {
-    height: 100svh;
-    min-height: 600px;
-  }
+      .statement,
+      .verse,
+      .progress { padding: 5rem 1.5rem; }
 
-  .hero-bg {
-    background-position: center 60%; /* push figures to lower 60% */
-    animation: none;
-  }
+      .stmt-grid { grid-template-columns: 1fr; }
 
-  /* Stronger gradient — heavier at top so title reads over sky */
-  .hero-fade {
-    background: linear-gradient(180deg,
-      rgba(9,8,6,0.92) 0%,
-      rgba(9,8,6,0.55) 20%,
-      rgba(9,8,6,0.08) 42%,
-      rgba(9,8,6,0.6)  70%,
-      rgba(9,8,6,1.00) 100%
-    );
-  }
+      .story {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 5rem 1.5rem;
+      }
 
-  /* Flip layout: title at top, label at bottom */
-  .hero-content {
-    justify-content: space-between; /* top and bottom */
-    padding: 6rem 1.5rem 3rem;     /* top pad clears nav */
-  }
+      .follow {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 5rem 1.5rem;
+      }
 
-  /* Title sits at top */
-  .hero-t1 { font-size: clamp(4rem, 20vw, 7rem); }
-  .hero-t2 { font-size: clamp(1.8rem, 9vw, 3rem); }
-  .hero-t3 { margin-top: 0.5rem; }
+      .progress-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      .progress-note { text-align: left; max-width: 100%; }
+      .ms { grid-template-columns: 82px 1fr; gap: 0 1.5rem; }
 
-  /* Hide the right-side descriptor */
-  .hero-aside { display: none; }
-  .hero-line  { left: 1.5rem; }
+      footer { padding: 1.5rem; }
+    }
 
-  /* Everything else */
-  .statement,
-  .verse,
-  .progress { padding: 5rem 1.5rem; }
-
-  .stmt-grid { grid-template-columns: 1fr; }
-
-  .story {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 5rem 1.5rem;
-  }
-
-  .follow {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 5rem 1.5rem;
-  }
-
-  .progress-head {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-  .progress-note { text-align: left; max-width: 100%; }
-  .ms { grid-template-columns: 82px 1fr; gap: 0 1.5rem; }
-
-  footer { padding: 1.5rem; }
-}
-
-@media (max-width: 420px) {
-  .hero-t1 { font-size: 3.8rem; }
-  .hero-t2 { font-size: 1.7rem; }
-}
+    @media (max-width: 420px) {
+      .hero-t1 { font-size: 3.6rem; }
+      .hero-t2 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
 
   <!-- NAV -->
   <nav>
@@ -968,7 +950,7 @@
   <script>
     // ── MAILCHIMP ─────────────────────────────────────────
     // Paste your full Mailchimp action URL here:
-    const MC_ACTION = 'https://gmail.us14.list-manage.com/subscribe/post?u=475649f6927ace2359a3cfc50&id=11e7b20f6d&f_id=005dc2e1f0';
+    const MC_ACTION = 'https://YOURNAME.us1.list-manage.com/subscribe/post?u=XXXXXXXXXXXXXXXX&id=XXXXXXXXXX';
 
     const btn = document.getElementById('mc-btn');
     const inp = document.getElementById('mc-email');
